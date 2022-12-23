@@ -1,7 +1,7 @@
 import os 
 from pathlib import Path
 
-STATIC_DIR = Path("static")
+STATIC_DIR = Path(os.getcwd(),"static")
 
 IMAGES_DIR = os.path.join(STATIC_DIR,"images")
 os.makedirs(IMAGES_DIR, exist_ok=True)
@@ -19,9 +19,7 @@ CONF_THRES = 0.50
 IOU_THRES = 0.45
 DEVICE = 'cpu'
 
-CLASSES = ['Ace', 'Jack', 'King', 'Nine', 'Queen', 'Ten']
-
 PORT = 5000
-HOST = '127.0.0.1'
-DEBUG = True
+HOST = '0.0.0.0'
+DEBUG = False
 

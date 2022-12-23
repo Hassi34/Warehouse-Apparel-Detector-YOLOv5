@@ -15,7 +15,7 @@
         <img alt="Last Commit" src="https://img.shields.io/github/last-commit/hassi34/Warehouse-Apparel-Detector-YOLOv5/main?color=g">
     </a>
     <a href="https://github.com/Hassi34/Warehouse-Apparel-Detector-YOLOv5">
-        <img alt="Code Size" src="https://img.shields.io/github/languages/code-size/Warehouse-Apparel-Detector-YOLOv5?color=g">
+        <img alt="Code Size" src="https://img.shields.io/github/languages/code-size/hassi34/Warehouse-Apparel-Detector-YOLOv5?color=g">
     </a>
     <a href="https://github.com/Hassi34/Warehouse-Apparel-Detector-YOLOv5">
         <img alt="Repo Size" src="https://img.shields.io/github/repo-size/hassi34/Warehouse-Apparel-Detector-YOLOv5?color=g">

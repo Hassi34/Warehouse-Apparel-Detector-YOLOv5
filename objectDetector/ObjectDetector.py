@@ -15,7 +15,7 @@ from objectDetector.detect import run
 class Detector:
 	def inference(self):
 		run(weights=CONFIG.FINAL_MODEL, source= CONFIG.INFERENCE_DIR, conf_thres=CONFIG.CONF_THRES, 
-			iou_thres=CONFIG.IOU_THRES, device=CONFIG.DEVICE, project='static/images', name = 'inference', exist_ok=True)
+			iou_thres=CONFIG.IOU_THRES, project='static/images', name = 'inference', exist_ok=True)
 		#bgr_image = cv2.imread(CONFIG.IMG_OUT)
 		#im_rgb = cv2.cvtColor(bgr_image, cv2.COLOR_RGB2BGR)
 		#cv2.imwrite(CONFIG.COLOR_IMG_OUT, im_rgb)
