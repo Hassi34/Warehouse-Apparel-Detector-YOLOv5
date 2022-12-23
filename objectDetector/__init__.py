@@ -1,0 +1,1 @@
+from .ObjectDetector import Detector

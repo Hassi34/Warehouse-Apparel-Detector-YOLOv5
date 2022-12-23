@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Warehouse Apparel Detector | YOLOv5</title>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<!-- Header -->
+<header class="bg-primary text-center py-5 mb-4">
+	<h2 class='container-heading'><span class="heading_font">Warehouse Apparel Detector Using YOLOv5</span></h2>
+	<br>
+	<div class='description'>
+		<p>A Vision AI based object detection web app to detect the warehouse apparel present in the image</p>
+	</div>
+  </header>
+  
+  <!-- Page Content -->
+  <div class="container">
+
+	  
+	<form class="input-group upload-data row">	
+		<div class="col-xl-6 col-md-6 col-sm-6">
+		<button type="button" class="btn btn-primary col-12" id="uload">Upload</button>
+		</div>
+		<div class="col-xl-6 col-md-6 col-sm-6">
+			<button id="send" type="button" class="btn btn-success col-12">Predict</button>
+		</div>
+
+		<!-- change url value  -->
+
+		<input type="hidden" class="form-control mr-2" id="url" placeholder="Enter REST Api url..." value="../predict" />
+		<input name="upload" type="file" id="fileinput" style="position:absolute;top:-500px; display: none;" /><br />
+	</form>
+
+	<div class="row">
+	  <!-- Team Member 1 -->
+	  <div class="col-xl-6 col-md-6 col-sm-6 mb-6">
+		<div class="card border-0 shadow upload-image ">
+		  <!-- <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="..."> -->
+		  	<video autoplay id="video" poster="https://img.freepik.com/free-vector/group-young-people-posing-photo_52683-18824.jpg?size=338&ext=jpg"></video>
+			<img src="" class="" id="photo">
+			<canvas style="display:none;" id="canvas"></canvas>
+		  <!-- <div class="card-body text-center">
+			<h5 class="card-title mb-0">Team Member</h5>
+		  </div> -->
+		</div>
+	  </div>
+	  <!-- Team Member 2 -->
+	  <div class="col-xl-6 col-md-6 col-sm-6 mb-6">
+		<div class="card border-0 shadow res-part2">
+		  <div class="card-body text-center">
+			<h5 class="card-title mb-0">Prediction Results</h5>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- /.row -->
+
+  
+  </div>
+	<div id="loading">
+		<div class="loader"></div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+	</script>
+
+	<script>
+		var mybtn = document.getElementById('startbtn');
+		var myvideo = document.getElementById('video');
+		var mycanvas = document.getElementById('canvas');
+		var myphoto = document.getElementById('photo');
+		var base_data = "";
+
+		function sendRequest(base64Data) {
+			var type = "json";
+			if (base64Data != "" || base64Data != null) {
+				if (type == "imgtobase") {
+					$(".res-part").html("");
+					$(".res-part").html(base64Data);
+				} else if (type == "basetoimg") {
+					var imageData = $("#imgstring").val();
+					$(".res-part").html("");
+					$(".res-part").append("<img src='data:image/jpeg;base64," + imageData + "' alt='' />");
+				} else {
+					var url = $("#url").val();
+					$("#loading").show();
+					$.ajax({
+						url: url,
+						type: "post",
+						cache: false,
+						async: true,
+						crossDomain: true,
+						headers: {
+							'Content-Type': 'application/json',
+							'Access-Control-Allow-Origin': '*'
+						},
+						data: JSON.stringify({
+							image: base64Data
+						}),
+						success: function (res) {
+							$(".res-part").html("");
+							$(".res-part2").html("");
+							var imageData = res.image;
+							$(".res-part2").append("<img class='resp-img' src='data:image/jpeg;base64," +
+								imageData + "' alt='' />");
+							// $(".res-part").html("<pre>" + JSON.stringify(res[0], undefined, 2) + "</pre>");
+							$("#loading").hide();
+						}
+					});
+				}
+			}
+		}
+
+		$(document).ready(function () {
+			$("#loading").hide();
+
+			$('#send').click(function (evt) {
+				sendRequest(base_data);
+			});
+
+			$('#uload').click(function (evt) {
+				$('#fileinput').focus().trigger('click');
+			});
+			$("#fileinput").change(function () {
+				if (this.files && this.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						var url = e.target.result;
+						var img = new Image();
+						img.crossOrigin = 'Anonymous';
+						img.onload = function () {
+							var canvas = document.createElement('CANVAS');
+							var ctx = canvas.getContext('2d');
+							canvas.height = this.height;
+							canvas.width = this.width;
+							ctx.drawImage(this, 0, 0);
+							base_data = canvas.toDataURL('image/jpeg', 1.0).replace(
+								/^data:image.+;base64,/, '');
+							canvas = null;
+						};
+						img.src = url;
+						$('#photo').attr('src', url);
+						$('#photo').show();
+						$('#video').hide();
+					}
+					reader.readAsDataURL(this.files[0]);
+				}
+			});
+		});
+	</script>
+
+	<!-- Footer -->
+	<div class="footer-basic">
+        <footer>
+            <div class="social">
+				<a href="https://github.com/Hassi34"><iconify-icon icon="radix-icons:github-logo"></iconify-icon></a>
+				<a href="https://www.linkedin.com/in/hasanain-mehmood"><iconify-icon icon="ion:logo-linkedin"></iconify-icon></a> 
+				<a href="https://www.instagram.com/hasanain_mehmood/"><iconify-icon icon="uil:instagram-alt"></iconify-icon></a>
+				<a href="https://www.facebook.com/profile.php?id=100086957420489"><iconify-icon icon="ic:outline-facebook"></iconify-icon></a>
+			</div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="https://aicaliber.com">AICALIBER</a></li>
+                <li class="list-inline-item"><a href="https://hasanain.aicaliber.com">About Developer</a></li>
+                <li class="list-inline-item"><a href="https://github.com/Hassi34/cardsdetector-detectron2">Source Code</a></li>
+				<li class="list-inline-item"><a href="https://github.com/Hassi34/warehouse-apparel-detector-YOLOv5">REST API</a></li>
+            </ul>
+            <p class="copyright">Copyright © 2022 AICALIBER</p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+	
+
+</body>
+</html>
