@@ -19,7 +19,7 @@ CONF_THRES = 0.50
 IOU_THRES = 0.45
 DEVICE = 'cpu'
 
-PORT = 5000
+PORT = 80
 HOST = '0.0.0.0'
 DEBUG = False
 

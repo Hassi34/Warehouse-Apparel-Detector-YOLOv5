@@ -1,5 +1,6 @@
 from objectDetector import Detector
 from flask import Flask, render_template, request, Response, jsonify
+from wsgiref import simple_server
 import os
 from flask_cors import CORS, cross_origin
 from common import decodeImage
@@ -43,4 +44,6 @@ def predictRoute():
 
 # port = int(os.getenv("PORT"))
 if __name__ == "__main__":
-    app.run()
+    httpd = simple_server.make_server(host=CONFIG.HOST, port=CONFIG.PORT, app=app)
+    httpd.serve_forever()
+    #app.run(host=CONFIG.HOST, port=CONFIG.PORT, debug= CONFIG.DEBUG)
