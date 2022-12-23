@@ -43,4 +43,4 @@ def predictRoute():
 
 # port = int(os.getenv("PORT"))
 if __name__ == "__main__":
-    app.run(debug = CONFIG.DEBUG, host=CONFIG.HOST, port=CONFIG.PORT)
+    app.run()
