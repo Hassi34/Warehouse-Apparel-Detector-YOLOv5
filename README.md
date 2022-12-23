@@ -22,17 +22,17 @@
     </a>
 </p>
 <p align="center">
-    <img width="600" src="static/web.gif" alt="About Web-App">
+    <img width="450" height="300" src="static/web.gif" alt="About Web-App">
+    <img width="450" height="300" src="static/inferences.gif" alt="Iferences">
 </p>
 
 ## Overview
 This is a web app empowered by Vision AI to detect the warehouse apparel in the image.The model is trained using YOLOv5. The REST API for the service has also been exposed to the web so users can use the web interface or the REST API<br>
 Following are the major contents to follow, you can jump to any section:
 
->   1. [Live Project Link](#)
->   2. [Run Locally](#run-local)
->   3. [Model Training](#)
->   4. [REST API](#rest-api)
+>   1. [Run Locally](#run-local)
+>   2. [Model Training](https://github.com/Hassi34/Warehouse-Apparel-Detector-YOLOv5/blob/main/Yolov5_custom_training.ipynb)
+>   3. [REST API](#rest-api)
 ### 🔗 Project Link<a id='live-project'></a>
 Check out the deployed app [here](#)
 
@@ -41,7 +41,7 @@ Check out the deployed app [here](#)
 Clone the project
 
 ```bash
-  git clone https://github.com/Hassi34/Warehouse-Apparel-Detector-YOLOv5
+  git clone https://github.com/Hassi34/Warehouse-Apparel-Detector-YOLOv5.git
 ```
 
 Go to the project directory
