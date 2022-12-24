@@ -35,7 +35,7 @@
 </p>
 
 ## Overview
-This is a web app empowered by Vision AI to detect the warehouse apparel in the image.The model is trained using YOLOv5. The REST API for the service has also been exposed to the web so users can use the web interface or the REST API<br>
+This is a web app empowered by Vision AI to detect the warehouse apparel in the image.The model is trained using YOLOv5.After successful deployment of the application, the REST API for the service will be exposed to the web so users can use the web interface or the REST API.<br>
 Following are the major contents to follow, you can jump to any section:
 
 >   1. [Run Locally](#run-local)
