@@ -3,8 +3,16 @@
         <h1 align="center">🧑🏻‍🏭 Warehouse Apparel Detector 👨🏻‍🔧</h1>
     </b>
 </p>
-<p align="center">
+<!-- <p align="center">
     <em>A Vision AI based object detection web app to detect the warehouse apparel present in the image</em>
+</p> -->
+<p align="center">
+<a href="https://github.com/Hassi34/Warehouse-Apparel-Detector-YOLOv5">
+    <img src="https://readme-typing-svg.demolab.com?font=Georgia&size=18&duration=3000&pause=5000&multiline=True&width=800&height=40&lines=A+Vision+AI+based+object+detection+web+app+to+detect+the+warehouse+apparel+present+in+the+image;" alt="Typing SVG" />
+</a>
+<a href="https://github.com/Hassi34/Warehouse-Apparel-Detector-YOLOv5">
+    <img src="https://readme-typing-svg.demolab.com?font=Georgia&size=18&duration=2000&pause=1000&multiline=False&width=350&height=40&lines=AI+%7C+Computer+Vision+%7C+Web+App%7C+REST+API;Python%7C+3.7%7C+3.8%7C+3.9%7C+3.10;YOLOv5" alt="Typing SVG" />
+</a>
 </p>
 
 <p align="center">
