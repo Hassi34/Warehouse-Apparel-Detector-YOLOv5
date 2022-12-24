@@ -33,8 +33,6 @@ Following are the major contents to follow, you can jump to any section:
 >   1. [Run Locally](#run-local)
 >   2. [Model Training](https://github.com/Hassi34/Warehouse-Apparel-Detector-YOLOv5/blob/main/Yolov5_custom_training.ipynb)
 >   3. [REST API](#rest-api)
-### 🔗 Project Link<a id='live-project'></a>
-Check out the deployed app [here](#)
 
 ## Run Locally<a id='run-local'></a>
 
